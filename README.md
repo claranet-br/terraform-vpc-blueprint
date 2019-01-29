@@ -46,7 +46,7 @@ module "vpc" {
 
 Por padrão esse modo provisiona um novo Elastic IP para cada VPC NAT Gateways.
 Isso significa que quando criar uma nova VPC, novos IPs são alocados e quando esta VPC for destruida esses IPs serão descartados.
-Algumas vezes é bom mmanter o mesmo IP se você destroi e recria a VPC
+Algumas vezes é bom manter o mesmo IP se você destroi e recria a VPC
 Por conta disso é possível definir IPs existentes no NAT Gateway.
 Isso previne que a destruição da VPC descarte esses IPs possibilitando o uso dos mesmo IPs na recriação da VPC.
 
@@ -174,28 +174,28 @@ Versão terraform mínima requerida é 0.10.3 para que esse módulo funcione.
 
 | Nome | Descrição | Tipo | Default | Obrigatório |
 |------|-------------|:----:|:-----:|:-----:|
-| amazon\_side\_asn | The Autonomous System Number (ASN) for the Amazon side of the gateway. By default the virtual private gateway is created with the current default Amazon ASN. | string | `"64512"` | no |
-| assign\_generated\_ipv6\_cidr\_block | Requests an Amazon-provided IPv6 CIDR block with a /56 prefix length for the VPC. You cannot specify the range of IP addresses, or the size of the CIDR block | string | `"false"` | no |
-| azs | A list of availability zones in the region | list | `[]` | no |
-| cidr | The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden | string | `"0.0.0.0/0"` | no |
-| create\_database\_internet\_gateway\_route | Controls if an internet gateway route for public database access should be created | string | `"false"` | no |
-| create\_database\_nat\_gateway\_route | Controls if a nat gateway route should be created to give internet access to the database subnets | string | `"false"` | no |
-| create\_database\_subnet\_group | Controls if database subnet group should be created | string | `"true"` | no |
-| create\_database\_subnet\_route\_table | Controls if separate route table for database should be created | string | `"false"` | no |
-| create\_elasticache\_subnet\_group | Controls if elasticache subnet group should be created | string | `"true"` | no |
-| create\_elasticache\_subnet\_route\_table | Controls if separate route table for elasticache should be created | string | `"false"` | no |
-| create\_redshift\_subnet\_group | Controls if redshift subnet group should be created | string | `"true"` | no |
-| create\_redshift\_subnet\_route\_table | Controls if separate route table for redshift should be created | string | `"false"` | no |
-| create\_vpc | Controls if VPC should be created (it affects almost all resources) | string | `"true"` | no |
-| database\_route\_table\_tags | Additional tags for the database route tables | map | `{}` | no |
-| database\_subnet\_group\_tags | Additional tags for the database subnet group | map | `{}` | no |
-| database\_subnet\_suffix | Suffix to append to database subnets name | string | `"db"` | no |
-| database\_subnet\_tags | Additional tags for the database subnets | map | `{}` | no |
-| database\_subnets | A list of database subnets | list | `[]` | no |
-| default\_vpc\_enable\_classiclink | Should be true to enable ClassicLink in the Default VPC | string | `"false"` | no |
-| default\_vpc\_enable\_dns\_hostnames | Should be true to enable DNS hostnames in the Default VPC | string | `"false"` | no |
-| default\_vpc\_enable\_dns\_support | Should be true to enable DNS support in the Default VPC | string | `"true"` | no |
-| default\_vpc\_name | Name to be used on the Default VPC | string | `""` | no |
+| amazon\_side\_asn | O Autonomous System Number (ASN) para do gateway da Amazon. Por padrão o VPG é criado com o valor padrão Amazon ASN. | string | `"64512"` | no |
+| assign\_generated\_ipv6\_cidr\_block | Requisita um bloco CIDR IPv6 com um tamanho /56 para a VPC. Você não precisa especificar o range de IP ou o tamanho do CIDR  | string | `"false"` | no |
+| azs | Uma lista de zonas de disbponibilidade em uma região | list | `[]` | no |
+| cidr | O bloco de CIDR da VPC. O valor padrão é um CIDR valido mas não é aceito pela AWS e precisa ser definido. | string | `"0.0.0.0/0"` | no |
+| create\_database\_internet\_gateway\_route | Define se a rota para um internet gateway para um database publico deve ser criado | string | `"false"` | no |
+| create\_database\_nat\_gateway\_route | Define se uma rota de nat gateway deve ser criada dando acesso a internet para a subnet de database | string | `"false"` | no |
+| create\_database\_subnet\_group | Define se uma subnet de database deve ser criada | string | `"true"` | no |
+| create\_database\_subnet\_route\_table | Define se será criado uma tabela de rota sperada apenas para database | string | `"false"` | no |
+| create\_elasticache\_subnet\_group | Define se a subnet do elasticache deve ser criada | string | `"true"` | no |
+| create\_elasticache\_subnet\_route\_table | Define se tera uma tabela de rota separada para o ElastiCache deve ser criada | string | `"false"` | no |
+| create\_redshift\_subnet\_group | Define se será criado uma subnet para redshift | string | `"true"` | no |
+| create\_redshift\_subnet\_route\_table | Define se será criado uma rota separada para redshift | string | `"false"` | no |
+| create\_vpc | Define se será criado uma VPC | string | `"true"` | no |
+| database\_route\_table\_tags | Tags adicionais para tabelas de rotas das databases | map | `{}` | no |
+| database\_subnet\_group\_tags | Tags adiconais para subnet de database | map | `{}` | no |
+| database\_subnet\_suffix | Sufixo no nome das subnets de database | string | `"db"` | no |
+| database\_subnet\_tags | Tags adicionais para subnets de database | map | `{}` | no |
+| database\_subnets | Uma lista de subnet de database | list | `[]` | no |
+| default\_vpc\_enable\_classiclink | Para habilitar ClassicLink na VPC | string | `"false"` | no |
+| default\_vpc\_enable\_dns\_hostnames | Para habilitar a resolução de hostname na VPC | string | `"false"` | no |
+| default\_vpc\_enable\_dns\_support | Para habilitar o suporte de DNS na VPC | string | `"true"` | no |
+| default\_vpc\_name | Nome da VPC | string | `""` | no |
 | default\_vpc\_tags | Additional tags for the Default VPC | map | `{}` | no |
 | dhcp\_options\_domain\_name | Specifies DNS name for DHCP options set | string | `""` | no |
 | dhcp\_options\_domain\_name\_servers | Specify a list of DNS server addresses for DHCP options set, default to AWS provided | list | `[ "AmazonProvidedDNS" ]` | no |
